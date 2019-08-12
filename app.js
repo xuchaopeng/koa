@@ -6,6 +6,8 @@ const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser');
 const logger = require('koa-logger');
 
+const pv = require('./middleware/koa-pv')
+
 const session = require('koa-generic-session');
 const Redis = require('koa-redis');
 
@@ -22,6 +24,8 @@ onerror(app);
 app.keys = ['keys', 'keyskeys'];
 app.use(
   session({
+    key:'mt',
+    prefix:'mtpr',
     store: new Redis()
   })
 );
@@ -35,6 +39,7 @@ app.use(
 app.use(json());
 app.use(logger());
 app.use(require('koa-static')(__dirname + '/public'));
+app.use(pv())
 
 app.use(
   views(__dirname + '/views', {

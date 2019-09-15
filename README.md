@@ -28,7 +28,7 @@
   redis-cli
   set name 'xcp' //设置键值对
   get name //取出键值对
-
+  setex name 10 111 //设置过期时间为10s 储存值为111
 ## koa 中间件
 
 ```javascript

@@ -22,14 +22,22 @@
 - 安装 [地址](https://www.runoob.com/redis/redis-install.html)
 - 基本命令
  ```javascript
-  **默认启动**
+  **默认启动** 启动数据库
   cmd => c:/Redis => redis-server
 
-  **另启 cmd**
+  **另启 cmd** 链接数据库
   redis-cli
   set name 'xcp' //设置键值对
   get name //取出键值对
   setex name 10 111 //设置过期时间为10s 储存值为111
+  
+  //设置密码登录
+  redis -p 6378 //重置端口号链接数据库
+  auth 123456 //密码登录
+  
+  KEYs * //查看redis所有的key
+  DEL a  //删除key为a的数据
+  
  ```
 ## koa 中间件
 
